@@ -1,9 +1,8 @@
 window.addEventListener("DOMContentLoaded", (_) => {
-    if window.location.host == "localhost" {
+    if (window.location.host == "localhost") {
       let websocket = new WebSocket("ws://" + window.location.host + "/websocket");
     } else {
       let websocket = new WebSocket("wss://" + window.location.host + "/websocket");
-
     }
     let room = document.getElementById("chat-text");
   
