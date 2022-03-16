@@ -1,1 +1,1 @@
-web: bin/gochat
+web: gochat
