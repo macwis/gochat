@@ -1,9 +1,12 @@
 window.addEventListener("DOMContentLoaded", (_) => {
-    if (window.location.host == "localhost") {
-      let websocket = new WebSocket("ws://" + window.location.host + "/websocket");
+    var prefix = "";
+    hosts_local = ["127.0.0.1", "localhost"]
+    if (hosts_local.some(function(v) { return window.location.host.indexOf(v) >= 0; })) {
+      prefix = "ws";
     } else {
-      let websocket = new WebSocket("wss://" + window.location.host + "/websocket");
+      prefix = "wss";
     }
+    let websocket = new WebSocket(prefix + "://" + window.location.host + "/websocket");
     let room = document.getElementById("chat-text");
   
     websocket.addEventListener("message", function (e) {
